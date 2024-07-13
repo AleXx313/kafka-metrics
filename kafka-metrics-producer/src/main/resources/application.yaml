@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: kafka-metrics-producer
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics
+server:
+  port: 8080

@@ -1,13 +1,13 @@
-package ru.mironov.kafkametrics;
+package ru.mironov.kafkametricsproducer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class KafkaMetricsApplication {
+public class KafkaMetricsProducerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(KafkaMetricsApplication.class, args);
+        SpringApplication.run(KafkaMetricsProducerApplication.class, args);
     }
 
 }

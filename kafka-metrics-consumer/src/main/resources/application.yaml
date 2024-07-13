@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: kafka-metrics-consumer
+
+server:
+  port: 8081
