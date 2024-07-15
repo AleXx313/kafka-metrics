@@ -1,6 +1,8 @@
 spring:
   application:
     name: kafka-metrics-consumer
-
+  kafka:
+    bootstrap-servers: localhost:9092
+    client-id: "consumer"
 server:
   port: 8081

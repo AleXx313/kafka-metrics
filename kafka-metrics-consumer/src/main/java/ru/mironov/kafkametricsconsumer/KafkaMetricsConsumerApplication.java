@@ -9,5 +9,4 @@ public class KafkaMetricsConsumerApplication {
     public static void main(String[] args) {
         SpringApplication.run(KafkaMetricsConsumerApplication.class, args);
     }
-
 }

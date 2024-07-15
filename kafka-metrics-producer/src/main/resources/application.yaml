@@ -1,6 +1,8 @@
 spring:
   application:
     name: kafka-metrics-producer
+  kafka:
+    bootstrap-servers: localhost:9092
 
 management:
   endpoints:
@@ -9,3 +11,7 @@ management:
         include: metrics
 server:
   port: 8080
+
+actuator:
+  metrics:
+    include: application.ready.time, disk.free, disk.total, executor.active, executor.pool.size, http.server.requests.active, jvm.classes.loaded, jvm.gc.live.data.size, jvm.memory.max, jvm.memory.usage.after.gc, jvm.memory.used, process.cpu.usage, system.cpu.usage
