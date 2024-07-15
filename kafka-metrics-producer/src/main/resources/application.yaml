@@ -3,6 +3,10 @@ spring:
     name: kafka-metrics-producer
   kafka:
     bootstrap-servers: localhost:9092
+  task:
+    scheduling:
+      pool:
+        size: 5
 
 management:
   endpoints:
