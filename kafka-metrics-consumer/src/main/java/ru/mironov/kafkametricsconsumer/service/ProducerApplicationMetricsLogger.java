@@ -21,7 +21,7 @@ public class ProducerApplicationMetricsLogger {
         List<ActuatorMetric> actuatorMetrics = null;
         try {
             actuatorMetrics = objectMapper.readValue(kafkaMessage, new TypeReference<List<ActuatorMetric>>() {});
-            log.info("Успешная передача! " + actuatorMetrics);
+            log.info(MetricsLogHelper.buildLog(actuatorMetrics));
         } catch (JsonProcessingException e) {
             log.info("Успех не случился");
         }
