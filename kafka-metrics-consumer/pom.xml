@@ -6,9 +6,8 @@
         <groupId>ru.mironov</groupId>
         <artifactId>kafka-metrics</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
-    <groupId>ru.mironov</groupId>
     <artifactId>kafka-metrics-consumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>kafka-metrics-consumer</name>
@@ -34,12 +33,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -50,5 +43,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
