@@ -9,16 +9,20 @@ import java.util.List;
 
 public class MetricsLogHelper {
 
-    public static String buildLog(List<ActuatorMetric> actuatorMetrics){
+    public static String buildLog(List<ActuatorMetric> actuatorMetrics) {
         StringBuilder sb = new StringBuilder();
-        sb.append("\n================================================================================================================================\n")
+        sb.append("\n==========================================================================")
+                .append("==========================================================================")
+                .append("==========================================================================\n")
                 .append("Время получения метрики: ")
                 .append(LocalDateTime.now().format(DateTimeFormatter.ofPattern(Constants.DATE_PATTERN)))
                 .append("\n");
         for (ActuatorMetric actuatorMetric : actuatorMetrics) {
             appendNewMetric(actuatorMetric, sb);
         }
-        sb.append("================================================================================================================================");
+        sb.append("==========================================================================")
+                .append("==========================================================================")
+                .append("==========================================================================");
         return sb.toString();
     }
 
@@ -33,7 +37,7 @@ public class MetricsLogHelper {
         getRequiredSpaces(startPosition, sb.length(), 48, sb);
         startPosition = sb.length();
         sb.append("\u001B[32m")
-                .append("Описание: " )
+                .append("Описание: ")
                 .append("\u001B[0m")
                 .append(actuatorMetric.getDescription() != null ? actuatorMetric.getDescription() : "Не предусмотрено spring-boot-actuator api");
         getRequiredSpaces(startPosition, sb.length(), 110, sb);
@@ -41,7 +45,7 @@ public class MetricsLogHelper {
         for (Measurement measurement : measurements) {
             sb.append(measurement.getStatistic().equals("VALUE") ? "" : " " + measurement.getStatistic())
                     .append(" - ").append(measurement.getValue());
-            if (hasBaseUnit){
+            if (hasBaseUnit) {
                 sb.append(" ")
                         .append(actuatorMetric.getBaseUnit());
             }

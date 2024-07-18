@@ -14,6 +14,7 @@ import java.util.concurrent.CompletableFuture;
 public class DefaultKafkaService implements KafkaService {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
+
     @Override
     public void sendMessage(String message) {
         CompletableFuture<SendResult<String, String>> future = kafkaTemplate.send("topic", message);

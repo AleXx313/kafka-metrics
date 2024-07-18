@@ -15,7 +15,7 @@ public class ActuatorMetricsClient {
     @Value("${actuator.metrics.include}")
     private List<String> metrics;
 
-    public String getMetrics(){
+    public String getMetrics() {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         for (String metric : metrics) {
@@ -26,12 +26,8 @@ public class ActuatorMetricsClient {
                     .body(String.class));
             sb.append(",");
         }
-        sb.deleteCharAt(sb.length() -1);
+        sb.deleteCharAt(sb.length() - 1);
         sb.append("]");
         return sb.toString();
-    }
-
-    public void testMetrics (){
-        metrics.forEach(System.out::println);
     }
 }

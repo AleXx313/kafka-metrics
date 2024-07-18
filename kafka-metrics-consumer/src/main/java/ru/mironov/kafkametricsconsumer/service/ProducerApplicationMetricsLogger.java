@@ -17,13 +17,15 @@ import java.util.List;
 public class ProducerApplicationMetricsLogger {
 
     private final ObjectMapper objectMapper;
-    public void logMetrics(String kafkaMessage){
+
+    public void logMetrics(String kafkaMessage) {
         List<ActuatorMetric> actuatorMetrics = null;
         try {
-            actuatorMetrics = objectMapper.readValue(kafkaMessage, new TypeReference<List<ActuatorMetric>>() {});
+            actuatorMetrics = objectMapper.readValue(kafkaMessage, new TypeReference<List<ActuatorMetric>>() {
+            });
             log.info(MetricsLogHelper.buildLog(actuatorMetrics));
         } catch (JsonProcessingException e) {
-            log.info("Успех не случился");
+            log.info("Ошибка парсинга json в List<ActuatorMetric>");
         }
     }
 }
