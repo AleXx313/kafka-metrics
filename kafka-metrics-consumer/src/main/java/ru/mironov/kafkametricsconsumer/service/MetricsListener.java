@@ -18,7 +18,7 @@ public class MetricsListener {
     private final ProducerApplicationMetricsLogger producerApplicationMetricsLogger;
 
     @RetryableTopic(attempts = "1", kafkaTemplate = "kafkaTemplate", dltStrategy = DltStrategy.FAIL_ON_ERROR)
-    @KafkaListener(topics = "topic", groupId = "${spring.kafka.client-id}")
+    @KafkaListener(topics = "metrics", groupId = "${spring.kafka.client-id}")
     public void handleActuatorMessage(String message) {
         producerApplicationMetricsLogger.logMetrics(message);
     }
