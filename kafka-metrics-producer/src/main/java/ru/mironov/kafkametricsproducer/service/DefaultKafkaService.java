@@ -17,7 +17,7 @@ public class DefaultKafkaService implements KafkaService {
 
     @Override
     public void sendMessage(String message) {
-        CompletableFuture<SendResult<String, String>> future = kafkaTemplate.send("topic", message);
+        CompletableFuture<SendResult<String, String>> future = kafkaTemplate.send("metrics", message);
         future.whenComplete(((stringStringSendResult, throwable) -> {
             if (throwable == null) {
                 log.info("Message send");

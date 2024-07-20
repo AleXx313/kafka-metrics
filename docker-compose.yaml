@@ -51,6 +51,20 @@ services:
     depends_on:
       - broker
 
+  metrics-db:
+    image: postgres:16-alpine
+    container_name: metrics-db
+    volumes:
+      - /var/lib/postgresql/data/
+    networks:
+      - kafka-network
+    ports:
+      - "6542:5432"
+    environment:
+      - POSTGRES_DB=kafkametrics
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+
   consumer:
     build: kafka-metrics-consumer
     image: consumer
@@ -60,3 +74,8 @@ services:
       - "8081:8081"
     depends_on:
       - broker
+      - metrics-db
+    environment:
+      - DATASOURCE_URL=jdbc:postgresql://metrics-db:5432/kafkametrics
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=root

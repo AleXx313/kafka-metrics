@@ -17,6 +17,7 @@ import java.util.List;
 public class ProducerApplicationMetricsLogger {
 
     private final ObjectMapper objectMapper;
+    private final MetricService metricService;
 
     public void logMetrics(String kafkaMessage) {
         List<ActuatorMetric> actuatorMetrics = null;
@@ -24,6 +25,7 @@ public class ProducerApplicationMetricsLogger {
             actuatorMetrics = objectMapper.readValue(kafkaMessage, new TypeReference<List<ActuatorMetric>>() {
             });
             log.info(MetricsLogHelper.buildLog(actuatorMetrics));
+            metricService.saveAll(actuatorMetrics);
         } catch (JsonProcessingException e) {
             log.info("Ошибка парсинга json в List<ActuatorMetric>");
         }
