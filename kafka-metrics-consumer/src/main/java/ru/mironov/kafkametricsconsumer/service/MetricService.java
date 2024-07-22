@@ -7,7 +7,10 @@ import java.util.List;
 public interface MetricService {
 
     List<ActuatorMetric> saveAll(List<ActuatorMetric> actuatorMetrics);
+
     List<String> getMetrics();
+
     List<ActuatorMetric> getMetricsByName(String metricName);
+
     ActuatorMetric getMetricById(Long id);
 }

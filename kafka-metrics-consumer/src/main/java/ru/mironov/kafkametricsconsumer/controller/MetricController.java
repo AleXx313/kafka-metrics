@@ -28,7 +28,7 @@ public class MetricController {
             summary = "Список метрик",
             description = "Позволяет получить список наименований имеющихся метрик"
     )
-    public List<String> getMetrics(){
+    public List<String> getMetrics() {
         return metricService.getMetrics();
     }
 
@@ -37,15 +37,16 @@ public class MetricController {
             summary = "Список метрик по имени",
             description = "Позволяет получить список сохраненных метрик по наименованию"
     )
-    public List<ActuatorMetric> getMetricsByName(@PathVariable @Parameter(description = "Наименование метрики") String name){
+    public List<ActuatorMetric> getMetricsByName(@PathVariable @Parameter(description = "Наименование метрики") String name) {
         return metricService.getMetricsByName(name);
     }
+
     @GetMapping("{id}")
     @Operation(
             summary = "Метрика по ID",
             description = "Позволяет получить конкретную метрику по id"
     )
-    public ActuatorMetric getMetricById(@PathVariable Long id){
+    public ActuatorMetric getMetricById(@PathVariable Long id) {
         return metricService.getMetricById(id);
     }
 }
